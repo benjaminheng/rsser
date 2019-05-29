@@ -16,6 +16,7 @@ type EdgeOwnerToTimelineMediaEdgeNode struct {
 	EdgeMediaToCaption EdgeMediaToCaption `json:"edge_media_to_caption"`
 	Shortcode          string             `json:"shortcode"`
 	DisplayURL         string             `json:"display_url"`
+	TakenAtTimestamp   int64              `json:"taken_at_timestamp"`
 }
 
 type EdgeOwnerToTimelineMediaEdge struct {

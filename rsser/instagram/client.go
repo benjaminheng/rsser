@@ -38,16 +38,17 @@ func GetUserFeed(ctx context.Context, username string) (feed *feeds.Feed, err er
 		}
 		description := media.Node.EdgeMediaToCaption.Edges[0].Node.Text
 		title := description
-		if len(title) > 50 {
-			title = title[:50]
+		if len(title) > 256 {
+			title = title[:256]
 		}
+		createdAt := time.Unix(media.Node.TakenAtTimestamp, 0)
 		item := &feeds.Item{
 			Title:       title,
 			Link:        &feeds.Link{Href: "https://www.instagram.com/p/" + media.Node.Shortcode},
 			Description: description,
 			Author:      &feeds.Author{Name: user.FullName},
-			Created:     time.Now(), // TODO
-			Content:     "",         // TODO
+			Created:     createdAt,
+			Enclosure:   &feeds.Enclosure{Url: media.Node.DisplayURL, Type: "image/jpeg", Length: "0"},
 		}
 		feed.Add(item)
 	}
