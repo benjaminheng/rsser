@@ -5,11 +5,13 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/benjaminheng/rsser/rsser/feedcache"
 	"github.com/benjaminheng/rsser/rsser/instagram"
 	"github.com/gorilla/feeds"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -29,8 +31,8 @@ func main() {
 	}
 	r := mux.NewRouter()
 	r.HandleFunc("/feed/instagram/user/{username}", srv.InstagramFeedHandler)
-	http.Handle("/", r)
-	log.Fatal(http.ListenAndServe(":8000", r))
+	log.Println("Server listening on :8000")
+	log.Fatal(http.ListenAndServe(":8000", handlers.LoggingHandler(os.Stdout, r)))
 }
 
 func (s *server) InstagramFeedHandler(w http.ResponseWriter, r *http.Request) {
