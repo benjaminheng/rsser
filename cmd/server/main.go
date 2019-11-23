@@ -8,8 +8,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/benjaminheng/rsser/rsser/feedcache"
-	"github.com/benjaminheng/rsser/rsser/instagram"
+	"github.com/benjaminheng/rsser/feedcache"
+	"github.com/benjaminheng/rsser/instagram"
 	"github.com/gorilla/feeds"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
