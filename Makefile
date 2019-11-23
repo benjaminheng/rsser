@@ -1,3 +1,5 @@
+all: clean vet test
+
 dockerbuild:
 	docker build . -t rsser
 
@@ -13,3 +15,12 @@ watch:
 
 tidy:
 	go mod tidy
+
+clean:
+	go clean ./...
+
+vet:
+	go vet ./rsser/...
+
+test:
+	go test -cover ./rsser/...
