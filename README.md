@@ -9,7 +9,7 @@ Currently RSSer supports the following sites:
 
 - Instagram
 
-Contributions for additional sites is strongly welcome!
+Contributions for additional sites are welcome!
 
 ## Usage
 
