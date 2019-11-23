@@ -15,6 +15,12 @@ import (
 
 var userPageDataRegexp = regexp.MustCompile(`(\{.+"entry_data".+\});</script>`)
 
+// GetUserFeed returns the feed for a given Instagram user, specified by
+// username.
+//
+// Instagram uses Redux for state management, and this state is hydrated
+// server-side before being served to clients. This state is parsed out of the
+// HTML response, and the JSON data parsed out using regex.
 func GetUserFeed(ctx context.Context, username string) (feed *feeds.Feed, err error) {
 	pageData, err := getUserPageData(ctx, username)
 	if err != nil {
